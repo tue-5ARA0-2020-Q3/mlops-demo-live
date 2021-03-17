@@ -1,20 +1,17 @@
-#import mlflow
-#import mlflow.sklearn
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.keras.layers import Input, Dropout, Flatten, Dense
-
-
+# import mlflow.tensorflow
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+
+from . import utils
 
 
 class Learner:
-
     """ Class to train & save the model """
-
     def __init__(self):
         self.folder_ml = 'models/'
         self.model = None
+        utils.enable_gpu_memory_growth()
 
     def make_model(self):
         """
@@ -42,13 +39,8 @@ class Learner:
                            metrics=['accuracy'])
 
     def train_model(self):
-
         """
         Training the model
-        :param X_train: training features
-        :type X_train: pandas dataframe
-        :param y_train: training labels
-        :type y_train: pandas dataframe
         """
         self.make_model()
         batch_size = 16
@@ -88,13 +80,10 @@ class Learner:
                        verbose=2)
 
     def save_model(self, model_name):
-
         """
         Saving the model using pickle
         :param model_name: name of model
         :type model_name: str
         """
-
         filename = model_name + '.h5'
         self.model.save_weights(self.folder_ml + filename)
-

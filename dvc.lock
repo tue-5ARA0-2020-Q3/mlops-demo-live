@@ -1,15 +1,12 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python -m catsdogs.main
+    cmd: python -m catsdogs
     deps:
-    - path: catsdogs\main.py
-      md5: 965ec5be08517200addb3bc3d85d384e
-      size: 1002
-    - path: catsdogs\train.py
-      md5: 804e41bfcfab0924dcb052b57d98cbd2
-      size: 3245
+    - path: catsdogs/train.py
+      md5: bc0c80a03897a920184722b4615e7910
+      size: 3080
     outs:
-    - path: models\model_simple.h5
-      md5: 02ba383538a6fdee9b82c4ff4b0c97ac
+    - path: models/model_simple.h5
+      md5: 1ae3d3db1460a526e6f38955f07a3329
       size: 21334184
