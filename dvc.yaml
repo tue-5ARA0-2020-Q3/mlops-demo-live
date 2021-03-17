@@ -1,0 +1,8 @@
+stages:
+  train:
+    cmd: python -m catsdogs.main
+    deps:
+    - catsdogs\main.py
+    - catsdogs\train.py
+    outs:
+    - models\model_simple.h5

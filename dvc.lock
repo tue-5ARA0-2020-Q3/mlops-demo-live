@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python -m catsdogs.main
+    deps:
+    - path: catsdogs\main.py
+      md5: 965ec5be08517200addb3bc3d85d384e
+      size: 1002
+    - path: catsdogs\train.py
+      md5: 804e41bfcfab0924dcb052b57d98cbd2
+      size: 3245
+    outs:
+    - path: models\model_simple.h5
+      md5: 02ba383538a6fdee9b82c4ff4b0c97ac
+      size: 21334184
