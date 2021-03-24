@@ -22,8 +22,8 @@ jobs:
       - uses: iterative/setup-dvc@v1
       - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
-          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-          ssh-host: ${{ secrets.HOST }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-host: ${{ secrets.SSH_HOST }}
       
       - uses: actions/setup-python@v2
         with:
@@ -32,7 +32,7 @@ jobs:
       - name: cml
         env:
           dvc_url: ${{ secrets.DVC_URL }}
-          dvc_port: ${{ secrets.port }}
+          dvc_port: ${{ secrets.DVC_PORT }}
           repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pip3 install -r requirements.txt
