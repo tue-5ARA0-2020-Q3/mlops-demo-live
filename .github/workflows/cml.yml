@@ -1,0 +1,46 @@
+name: train-my-model
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  run:
+    runs-on: [ubuntu-18.04]
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
+      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+          ssh-host: ${{ secrets.HOST }}
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          
+      - name: cml
+        env:
+          dvc_url: ${{ secrets.DVC_URL }}
+          dvc_port: ${{ secrets.port }}
+          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          pip3 install -r requirements.txt
+          dvc remote modify myremote url ${dvc_url}
+          dvc remote modify myremote port ${dvc_port}
+          dvc pull
+          dvc repro train
+          
+          touch report.md
+          echo "##Report Created" >> report.md
+          cml-send-comment report.md 
