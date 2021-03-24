@@ -4,9 +4,9 @@ stages:
     cmd: python -m catsdogs
     deps:
     - path: catsdogs/train.py
-      md5: bc0c80a03897a920184722b4615e7910
+      md5: 0068f7fee1094003d63f696347101b87
       size: 3080
     outs:
     - path: models/model_simple.h5
-      md5: 1ae3d3db1460a526e6f38955f07a3329
+      md5: 8bab02758dac790ee0bed9f5000ca128
       size: 21334184

@@ -43,7 +43,7 @@ class Learner:
         Training the model
         """
         self.make_model()
-        batch_size = 16
+        batch_size = 32
 
         # this is the augmentation configuration we will use for training
         train_datagen = ImageDataGenerator(
