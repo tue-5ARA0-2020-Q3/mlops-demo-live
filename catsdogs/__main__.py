@@ -1,7 +1,7 @@
 import argparse
 import yaml
 
-#from . import enable_determinism as dt
+from . import enable_determinism as dt
 from . import train
 
 
@@ -37,10 +37,10 @@ if __name__ == '__main__':
     with open(args.hyperparam) as f:
         hp = yaml.load(f, Loader=yaml.FullLoader)
         seed = hp.get('seed')
-        #full_determinism = hp.get('full_determinism', False)
+        full_determinism = hp.get('full_determinism', False)
         if seed:
             print("Setting up a random seed:" + str(seed))
-         #   dt.set_global_determinism(seed=seed, fast_n_close=full_determinism)
+            dt.set_global_determinism(seed=seed, fast_n_close=full_determinism)
 
         #tracking = hp.get('tracking_enabled', False)
         #if tracking:

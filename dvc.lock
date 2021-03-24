@@ -1,12 +1,15 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python -m catsdogs
+    cmd: python -m catsdogs -p hyperparam.yml
     deps:
-    - path: catsdogs/train.py
-      md5: 0068f7fee1094003d63f696347101b87
-      size: 3080
+    - path: catsdogs\train.py
+      md5: 553c5c161e708a53cf23d0b89f3227df
+      size: 3607
+    - path: hyperparam.yml
+      md5: 082329516e85b9546a6deaef94a9b25c
+      size: 88
     outs:
-    - path: models/model_simple.h5
-      md5: 8bab02758dac790ee0bed9f5000ca128
+    - path: models\model_simple.h5
+      md5: 91025b690b9f66c7d5f55dc581ff3371
       size: 21334184
