@@ -2,14 +2,24 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+from tensorflow.keras.callbacks import Callback
+#import dvclive
 
 from . import utils
 
+"""
+class MetricsCallback(Callback):
+    def on_epoch_end(self, epoch: int, logs: dict = None):
+        logs = logs or {}
+        for metric, value in logs.items():
+            dvclive.log(metric, value)
+        dvclive.next_step()
+"""
 
 class Learner:
     """ Class to train & save the model """
-    def __init__(self):
-        self.folder_ml = 'models/'
+    def __init__(self, output_dir):
+        self.folder_ml = output_dir
         self.model = None
         utils.enable_gpu_memory_growth()
 
@@ -38,12 +48,14 @@ class Learner:
                            optimizer='rmsprop',
                            metrics=['accuracy'])
 
-    def train_model(self):
+    def train_model(self, hyper_param=dict()):
         """
         Training the model
         """
+        batch_size = hyper_param.get('batch_size', 32)
+        epochs = hyper_param.get('epochs', 1)
+
         self.make_model()
-        batch_size = 32
 
         # this is the augmentation configuration we will use for training
         train_datagen = ImageDataGenerator(
@@ -73,11 +85,13 @@ class Learner:
             class_mode='binary')
 
         print('Fitting model...')
+        #dvclive.init("training_metrics")
         self.model.fit(train_generator,
-                       epochs=5,
+                       epochs=epochs,
                        batch_size=batch_size,
                        validation_data=validation_generator,
                        verbose=2)
+                       #callbacks=[MetricsCallback()])
 
     def save_model(self, model_name):
         """
