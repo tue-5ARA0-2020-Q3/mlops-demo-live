@@ -36,8 +36,8 @@ jobs:
           repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pip3 install -r requirements.txt
-          dvc remote modify myremote url ${dvc_url}
-          dvc remote modify myremote port ${dvc_port}
+          dvc remote modify my_remote url ${dvc_url}
+          dvc remote modify my_remote port ${dvc_port}
           dvc pull
           dvc repro train
           
