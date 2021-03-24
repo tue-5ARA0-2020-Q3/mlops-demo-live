@@ -1,4 +1,4 @@
 [core]
-    remote = local
-['remote "local"']
-    url = C:/tmp/catsdogs_store
+    remote = my_remote
+['remote "my_remote"']
+    url = C:\Users
