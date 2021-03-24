@@ -2,7 +2,7 @@ stages:
   train:
     cmd: python -m catsdogs -p hyperparam.yml
     deps:
-    - catsdogs\train.py
+    - catsdogs/train.py
     - hyperparam.yml
     outs:
-    - models\model_simple.h5
+    - models/model_simple.h5
