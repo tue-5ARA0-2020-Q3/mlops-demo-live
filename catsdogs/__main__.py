@@ -42,10 +42,10 @@ if __name__ == '__main__':
             print("Setting up a random seed:" + str(seed))
             dt.set_global_determinism(seed=seed, fast_n_close=full_determinism)
 
-        #tracking = hp.get('tracking_enabled', False)
-        #if tracking:
-        #    import mlflow
-        #    mlflow.tensorflow.autolog()
-        #    mlflow.log_params(hp)
+        tracking = hp.get('tracking_enabled', False)
+        if tracking:
+            import mlflow
+            mlflow.tensorflow.autolog()
+            mlflow.log_params(hp)
 
         run_ml_training(hp, output_dir=out_dir)
