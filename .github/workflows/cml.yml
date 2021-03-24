@@ -39,7 +39,7 @@ jobs:
           dvc remote modify my_remote url ${dvc_url}
           dvc remote modify my_remote port ${dvc_port}
           dvc pull
-          python -m cats_and_dogs -p hyperparam.yml
+          python -m catsdogs -p hyperparam.yml
           
           touch report.md
           echo "##Report Created" >> report.md
