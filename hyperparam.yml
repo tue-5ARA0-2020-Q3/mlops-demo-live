@@ -1,6 +1,6 @@
 seed: 10
 full_determinism: true
-batch_size: 64
-epochs: 1
+batch_size: 32
+epochs: 2
 tracking_enabled: false
 

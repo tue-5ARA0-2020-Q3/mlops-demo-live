@@ -3,13 +3,13 @@ stages:
   train:
     cmd: python -m catsdogs -p hyperparam.yml
     deps:
-    - path: catsdogs\train.py
+    - path: catsdogs/train.py
       md5: 553c5c161e708a53cf23d0b89f3227df
       size: 3607
     - path: hyperparam.yml
-      md5: 082329516e85b9546a6deaef94a9b25c
+      md5: 0528491438ea7275009cb37754b3183f
       size: 88
     outs:
-    - path: models\model_simple.h5
-      md5: 91025b690b9f66c7d5f55dc581ff3371
+    - path: models/model_simple.h5
+      md5: 6672e2c63f7877e3d316f4abae803777
       size: 21334184
