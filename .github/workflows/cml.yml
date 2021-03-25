@@ -34,9 +34,8 @@ jobs:
           pip3 install -r requirements.txt
           dvc remote modify local url ${dvc_url}
           dvc remote modify local port ${ssh_port}
-          touch ~/.ssh/id_key
-          echo "${ssh_key}" > ~/.ssh/id_key
-          dvc remote modify local keyfile ~/.ssh/id_key
+          echo "${ssh_key}" > id_key
+          dvc remote modify local keyfile id_key
           dvc remote modify local password ${ssh_passwd}
           dvc remote rename local my_remote
           dvc pull
