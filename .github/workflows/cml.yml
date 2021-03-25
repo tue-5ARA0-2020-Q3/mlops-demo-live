@@ -45,6 +45,7 @@ jobs:
           
           touch report.md
           echo "##Report Created" >> report.md
-          cml-send-comment report
+          cml-send-comment report.md
           
-          .md 
+          
+          
