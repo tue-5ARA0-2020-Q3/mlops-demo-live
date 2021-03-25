@@ -40,8 +40,11 @@ jobs:
           dvc remote modify local port ${dvc_port}
           dvc remote rename local my_remote
           dvc pull
-          python -m catsdogs -p hyperparam.yml
+          dvc repro
+          # python -m catsdogs -p hyperparam.yml
           
           touch report.md
           echo "##Report Created" >> report.md
-          cml-send-comment report.md 
+          cml-send-comment report
+          
+          .md 
